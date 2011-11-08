@@ -1,0 +1,24 @@
+CouchDB
+
+ドキュメント指向データベース
+Erlngで開発されている
+データはJSON形式
+
+インクリメンタルMapReduuceによるIndexing
+サーバサイドJavascriptによるアプリ開発
+
+JSON over RESTful API
+
+以後、ボーッとしてた。
+
+Memcachedの主要開発者が立ち上げた会社、MEMBASE.org
+MembaseServerとは、Memcachedのプロトコルに100%互換
+
+こんな会社とCouchなんちゃらって会社が合併してできたのが、
+CouchBase社？らしいよ。
+
+Membase + Couchbase = CouchDB ????
+
+
+
+

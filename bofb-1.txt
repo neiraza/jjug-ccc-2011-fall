@@ -1,0 +1,115 @@
+櫻庭さんタイムが始まる！
+
+JavaFX2.0への誘い
+
+Java in box
+infoQ,ITproへ寄稿してます
+
+日本JavaFXユーザグループ
+11/10(木)JavaFX2.0 勉強会開催予定
+
+今日はJavaFX会員が4名。。。
+
+@JDK/JRE
+ AWT - Swing
+       Java2D
+
+ AWTは機種によって散々な動きだったよね、名称的に詐欺じゃん。
+ SwingはJ2E2.0時代に出てきて、遅かったよね。
+ もう10年近く、この2つでやってきてるよねぇ・・・・。
+
+@Java
+ SwingX
+ JAI/ImageIO(ImageIOだけ後にJDKにとりこまれた)
+ Java3D - LG3D(2000年ぐらいにストップ)
+ JOGL(OpenGLのラッパー,Jmonkey engineとかで使われてる)
+ SWT(Eclipseであったよね、あいつどうなったんだ)
+ GWT(Javaというかnon-Javaというか)
+
+@Non-Java
+ F3(当時は別会社の個人プロジェクト、Sunに買収されて気づいたらトップPJになってた)
+ → JavaFX→今はJava(JavaFX2.0として)に入ってしまった。
+ →JAvaFX3.0は次期JDKに乗ることがきまった。つまり、SEのどまんかなにきた。
+  これまではMEなのかSEなのか、全方向に向いた怪しげな言語だったのに、
+  Swingと被るデスクトップ系のど真ん中。。。
+
+今後は、JavaのClient系ではJavaFX中心になる。
+
+
+AWT、Swingを捨てて、第3のGUIライブラリとしていきていく。
+過去のしがらみがなくなったので、高性能レンダリングエンジンがバリバリで、
+アニメーションがアクセラレータがんがんよ。
+
+JVMで動作する言語から利用可。
+→皆さんもご存知！Groovyを使って対応していくGroovyFXな。
+→対抗馬がScala。ScalaFXなんだけどコミッターはまだ3人。
+ そのうちの1人はJavaFXScript時代のコミッターらしく、期待できるかもしれない。
+
+JavaFX
+ UI
+  -SceneGraph(グラフといってもグラフ理論のことな)
+   JavaFXで外側ではStageがあって、その中にsceneがあり、その中にVBoxがある。
+   あとはHBox(Label,TextBox,Button)やTableViewがあるのよ。
+   Node-Control(Parts(web,media,chart)),Pane(Layout,partition(tate,yoko)),Shape(circle,line)
+   Web:HTML5が表示できればよいよね。WebViewで実現できるよ。（webkitベースにつくられてる。Androidも一緒だっけか）
+    プレゼン自体はJavaFX2.0Betaでつくったお。DOMおけーだし、JavascriptもOKだお。HTML5はDB系がサポートしてないのあるよ。
+   Media:FLVが使える（JMPだっけ、あいつはだめだったよな）
+    関係ないけど、デモ中の映像及び音楽はサンフランシスコ縛りでやってる。
+    理由はJavaFX2.0プロジェクトのコードネームが、サンフランシスコ縛りだったからさ。あははは。
+
+    sourceを表示してみると、appletみたいだよね。ここでyesと言うと、おじさんだな。
+    set,getしまくるJavaソースをかくのって、ウザいよね。
+    なのでxmlでかけることになったんだが、スキーマがない。（FXMLという呼称らしい）
+    よって、要素名に自クラス名をいれたりとか、緩いかんじなわけ。
+
+    ３Dもかけるけど、ハードウェアアクセラレーションがかかっているやつしか、できないんだけどね。
+
+    JavaFX2.0 SDK sampleを見れば勉強できると思うよ。 
+    
+    netbeansでやるのが今はいいかもね。
+
+    node
+    -Animation
+     GIF等を用意すればコマ送り的にアニメすることもできるが、
+     最近はスタートとエンドを覚えさせておけば、自動補完で対応できるよ。
+     クラスが用意されているので、移動や回転はとらんじっしょんでいける。
+     少し複雑なのはタイムラインで、コマで管理してかけるよ。
+    -Effect
+     元の表現があった場所に、オリジナルの味を加える。
+     ぼかしやドロップ車道とかね。絵のリフレクションなんざ1行でかけるぜ。
+     セピアも当然できるよ。
+   -CSS
+    Swingでは埋め込みでしか使えなかった(しかも1.0のみだっけ？)が、デザイナーに外だしでデザインさせる方がいいよね。
+    やっとJavaでも使えそうだぞ。
+
+ GeneralPurpose
+  -Property
+   -Bind
+    MVC(Model-View-Controller):Controller -Event- Model -Observer Pattern- View
+    EventやObPとかすっげ、面倒だよね
+    そこで出てきたのが、Bindって考え方。一方が変更されたら、そこを空気を読んで、もう一方を更新したりとか。
+    Swingでやろうとすると、Listhner祭りでだるかったよね。
+    Objectの一部が変更された場合に、Bindで対応させることも可能だけど、その際はカスタムにする必要があるねぇ。
+
+   -Colllection
+ -Async
+  GUIを触っているときはスレッドが重要。
+  だって、シングルスレッドだもんね。（GUIを触るとこのやつがってことな。これはSwingもAndroidも一緒だよね）
+  Swingは最近？入ってきたよね。(SwingWorker)
+
+
+
+JavaFXもJavaSE8に乗ることがきまったため、OpenJDKでも扱うことになった。
+2013年
+Netbeans7.1 SceneBuilder (early access) ←dev用であって、デザイナ向けじゃないんだよねぇ。。。
+
+これからのGUIは、デザイナとの協業がしやすいToolがないと、
+やっていけないんだよね。だから、ほしいわけ！
+
+次のバージョンのコードネームは、ろんばーどすとりーと？（007でも使った、ぐねぐねの坂道）
+
+
+
+
+
+JavaME8 cdc cldc （一部がSEにのる） 
